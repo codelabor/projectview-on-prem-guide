@@ -466,9 +466,21 @@ org-SDS
 
 ## 시스템 관리자 로그인
 
+시스템 관리자로 로그인한다.
 
+* ID: system.admin 
+* Password: system.admin01!
 
-## 프로젝트 관리자 승격
+로그인에 성공하면 비밀번호를 재설정한다.
 
-## 프로젝트 팀원 등록
+### 프로젝트 셍성 및 관리자 지정
 
+* 프로젝트를 생성한다.
+* 프로젝트 관리자를 지정한다.
+
+## 프로젝트 관리자 로그인
+
+매뉴얼을 참고하여 프로젝트를 관리한다.
+
+* 관리자 매뉴얼 : https://site.projectview.io/projectview-manual/admin-manual/
+* 사용자 매뉴얼 : https://site.projectview.io/projectview-manual/user-manual/
