@@ -441,10 +441,11 @@ projectview@projectview:~/다운로드$ ls
 projectview@projectview:~/다운로드$ cd certificate
 projectview@projectview:~/다운로드/certificate$ ls
 'SDS.ACT Root Certificate.crt'
-
 ```
+
 * 모든 선택 사항을 설정해서 등록한다. 
 * 등록 후 인증 기관 목록에 아래 내용이 표시된다.
+
 ```
 org-SDS
         SDS.ACT Root Certificate
