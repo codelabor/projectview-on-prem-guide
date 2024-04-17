@@ -264,13 +264,6 @@ WARN[0000] /app/projectview/docker-compose.yml: `version` is obsolete
 
 ```
 
-## 웹 브라우저로 서비스 확인
-
-아래 URL로 첫 페이지가 표시되는지 확인한다.
-보안 경고를 무시하고 첫 페이지(로그인 페이지)가 보이는지 확인한다.
-
-* https://localhost/
-
 ## 서버 IP 주소 확인
 
 클라이언트에서 서버로 접속하기 위한 IP 주소를 확인한다.
@@ -410,3 +403,72 @@ wlp2s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 
 위 예에서는 IP 주소가 아래와 같다.
 * 192.168.0.247
+
+hosts 파일을 편집한다.
+```
+projectview@projectview:~$ sudo vi /etc/hosts
+```
+
+아래와 같이 IP 주소를 'site.projectview.io' URL을 등록한다.
+```
+127.0.0.1       localhost
+127.0.1.1       projectview
+192.168.0.247   site.projectview.io
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+```
+
+## 인증서 등록
+
+* Chrome을 실행한다.
+* URL에 'chrome://settings'를 입력하고 해당 페이지로 이동한다.
+* 왼쪽에서 '개인 정보 보호 및 보안'을 클릭한다.
+* '보안'을 클릭한다.
+* '고급'까지 스크롤한다.
+* '인증서 관리'를 클릭한다.
+* '인증 기관' 탭을 선택한다.
+* '가져오기'를 클릭한다.
+* 제공된 파일 중 아래 인증서를 선택한다.
+```
+projectview@projectview:~/다운로드$ ls
+ certificate   chrome   docker   documents   projectview   utility  'vs code'
+projectview@projectview:~/다운로드$ cd certificate
+projectview@projectview:~/다운로드/certificate$ ls
+'SDS.ACT Root Certificate.crt'
+
+```
+* 모든 선택 사항을 설정해서 등록한다. 
+* 등록 후 인증 기관 목록에 아래 내용이 표시된다.
+```
+org-SDS
+        SDS.ACT Root Certificate
+```
+
+## 웹 브라우저로 서비스 확인
+
+아래 URL로 첫 페이지가 표시되는지 확인한다.
+
+* https://site.projectview.io
+
+
+## 프로젝트 관리자 등록
+
+로그인 창에서 '회원가입'을 클릭하여 프로젝트 관리자를 등록한다.
+가입이 완료되면 등록된 관리자로 로그인한다.
+
+로그인 시 '가입된 프로젝트가 없습니다.'라는 표시가 나오면 정상이다. 
+
+## 시스템 관리자 로그인
+
+
+
+## 프로젝트 관리자 승격
+
+## 프로젝트 팀원 등록
+
