@@ -1,7 +1,7 @@
 # ProjectView 설치
 
-## 설치 경로 준비
-임시 디렉토리와 설치 디렉토리를 생성한다.
+## 설치 디렉토리 생성
+임시 디렉토리와 설치 디렉토리를 생성하고 소유권을 설정한다.
 
 ```
 projectview@projectview:~$ sudo mkdir -p /app/installer
@@ -473,6 +473,9 @@ org-SDS
 * Password: system.admin01!
 
 로그인에 성공하면 비밀번호를 재설정한다.
+
+**Warning**
+변경된 비밀번호를 잊지 않도록 메모한다.
 
 ### 프로젝트 셍성 및 관리자 지정
 
