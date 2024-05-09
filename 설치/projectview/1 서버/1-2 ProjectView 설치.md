@@ -1,6 +1,7 @@
-# ProjectView 설치
+## 1-2 ProjectView 설치
+### ProjectView 설치
 
-## 설치 디렉토리 생성
+#### 설치 디렉토리 생성
 임시 디렉토리와 설치 디렉토리를 생성하고 소유권을 설정한다.
 
 ```
@@ -11,7 +12,7 @@ projectview@projectview:~$ sudo chown -R projectview:projectview /app
 ```
 
 
-## 설치 파일 준비
+#### 설치 파일 준비
 임시 디렉토리에 설치 파일을 복사한다.
 
 ```
@@ -24,7 +25,7 @@ projectview@projectview:/app/installer$ ls
 projectview-installer-v2.0.5.tar
 ```
 
-## 설치 파일 해제
+#### 설치 파일 해제
 설치 파일 아카이브를 해제한다.
 
 ```
@@ -47,7 +48,7 @@ projectview@projectview:/app/installer$ tar -xvf *.tar
 ```
 
 
-## 설정 파일 편집
+#### 설정 파일 편집
 설정 파일을 vi 편집기나 Visual Studio Code로 편집한다.
 
 ```
@@ -80,7 +81,7 @@ PROJECTVIEW_LOG_PATH=${INSTALL_TARGET_PATH}/logs
 
 ```
 
-## 설치 스크립트 실행
+#### 설치 스크립트 실행
 설치 스크립트에 실행 권한을 부여한 후 실행한다.
 
 ```
@@ -176,7 +177,7 @@ WARN[0000] /app/installer/docker-compose.yml: `version` is obsolete
 ```
 설치 완료 후 자동으로 실행된다.
 
-## 설치 결과 확인
+#### 설치 결과 확인
 설치 디렉토리를 확인한다.
 
 ```
@@ -186,20 +187,20 @@ cert                   config.env  logs                shutdown-projectview.sh  
 
 ```
 
-### 디렉토리
+##### 디렉토리
 * cert : 도메인 인증서 디렉토리
 * conf : 웹서버 설정 파일 디렉토리
 * logs : 서비스 별 로그 파일 디렉토리
 * postgresql : 데이터베이스 데이터 디렉토리
 * uploadFiles : 첨부 파일 디렉토리
 
-### 파일
+##### 파일
 * config.env : ProjectView 설정 파일
 * docker-compose.yml : docker compose 설정 파일
 * shutdown-projectview.sh : ProjectView 서비스 종료 스크립트 파일
 * startup-projectview.sh : ProjectView 서비스 시작 스크립트 파일
 
-## 실행 프로세스 확인
+#### 실행 프로세스 확인
 실행된 docker 프로세스를 확인한다.
 ```
 projectview@projectview:/app/projectview$ docker ps
@@ -218,7 +219,7 @@ f0df3a8b86e8   projectview/postgres:13.13                                       
 
 ```
 
-## 서비스 종료
+#### 서비스 종료
 실행 중인 서비스를 종료한다.
 ```
 projectview@projectview:/app/projectview$ ls
@@ -240,7 +241,7 @@ projectview@projectview:/app/projectview$ ./shutdown-projectview.sh
 
 ```
 
-## 서비스 시작
+#### 서비스 시작
 서비스를 시작한다.
 ```
 projectview@projectview:/app/projectview$ ls
@@ -264,7 +265,7 @@ WARN[0000] /app/projectview/docker-compose.yml: `version` is obsolete
 
 ```
 
-## 서버 IP 주소 확인
+#### 서버 IP 주소 확인
 
 클라이언트에서 서버로 접속하기 위한 IP 주소를 확인한다.
 
@@ -424,7 +425,7 @@ ff02::2 ip6-allrouters
 
 ```
 
-## 인증서 등록
+#### 인증서 등록
 
 * Chrome을 실행한다.
 * URL에 'chrome://settings'를 입력하고 해당 페이지로 이동한다.
@@ -451,20 +452,20 @@ org-SDS
         SDS.ACT Root Certificate
 ```
 
-## 웹 브라우저로 서비스 확인
+###### 웹 브라우저로 서비스 확인
 
 아래 URL로 첫 페이지가 표시되는지 확인한다.
 
 * https://site.projectview.io
 
 
-## 프로젝트 관리자 등록
+#### 프로젝트 관리자 등록
 
 로그인 창에서 '회원가입'을 클릭하여 프로젝트 관리자를 등록한다.
 가입이 완료되면 등록된 관리자로 자동 로그인된다.
 로그인 후 '가입된 프로젝트가 없습니다.'라는 표시가 나오면 정상이다. 
 
-## 시스템 관리자 로그인
+#### 시스템 관리자 로그인
 
 시스템 관리자로 로그인한다.
 
@@ -476,14 +477,14 @@ org-SDS
 **Warning**
 변경된 비밀번호를 잊지 않도록 메모한다.
 
-### 프로젝트 생성 및 관리자 지정
+##### 프로젝트 생성 및 관리자 지정
 
 * '코드 관리 > 회사코드'에서 고객사 코드를 추가한다.
 * '코드 관리 > 회사코드'에서 협력사 코드를 추가한다.
 * 프로젝트를 생성한다.
 * 프로젝트 관리자를 지정한다.
 
-## 프로젝트 관리자 로그인
+#### 프로젝트 관리자 로그인
 
 로그인 후 '프로젝트 첫 방문입니다.'라는 표시가 나오면 정상이다.
 
