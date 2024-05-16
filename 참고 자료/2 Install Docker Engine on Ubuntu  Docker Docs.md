@@ -10,7 +10,8 @@ To get started with Docker Engine on Ubuntu, make sure you [meet the prerequisit
 
 To install Docker Engine, you need the 64-bit version of one of these Ubuntu versions:
 
--   Ubuntu Mantic 23.10
+-   Ubuntu Noble 24.04 (LTS)
+-   Ubuntu Mantic 23.10 (EOL: [July 12, 2024](https://wiki.ubuntu.com/Releases))
 -   Ubuntu Jammy 22.04 (LTS)
 -   Ubuntu Focal 20.04 (LTS)
 
@@ -34,10 +35,6 @@ Moreover, Docker Engine depends on `containerd` and `runc`. Docker Engine bundle
 
 Run the following command to uninstall all conflicting packages:
 
-```console
-$ for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
-```
-
 `apt-get` might report that you have none of these packages installed.
 
 Images, containers, volumes, and networks stored in `/var/lib/docker/` aren't automatically removed when you uninstall Docker. If you want to start with a clean installation, and prefer to clean up any existing data, read the [uninstall Docker Engine](https://docs.docker.com/engine/install/ubuntu/#uninstall-docker-engine) section.
@@ -55,15 +52,11 @@ You can install Docker Engine in different ways, depending on your needs:
 -   Use a [convenience script](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script). Only recommended for testing and development environments.
     
 
-### [Install using the apt repository](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
+### [Install using the `apt` repository](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 
 Before you install Docker Engine for the first time on a new host machine, you need to set up the Docker repository. Afterward, you can install and update Docker from the repository.
 
 1.  Set up Docker's `apt` repository.
-    
-    ```bash
-    # Add Docker's official GPG key: sudo apt-get update sudo apt-get install ca-certificates curl sudo install -m 0755 -d /etc/apt/keyrings sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc sudo chmod a+r /etc/apt/keyrings/docker.asc # Add the repository to Apt sources: echo \ "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \ $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \ sudo tee /etc/apt/sources.list.d/docker.list > /dev/null sudo apt-get update
-    ```
     
     > **Note**
     > 
@@ -75,17 +68,9 @@ Before you install Docker Engine for the first time on a new host machine, you n
     
     To install the latest version, run:
     
-    ```console
-    $ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-    ```
-    
     ___
     
 3.  Verify that the Docker Engine installation is successful by running the `hello-world` image.
-    
-    ```console
-    $ sudo docker run hello-world
-    ```
     
     This command downloads a test image and runs it in a container. When the container runs, it prints a confirmation message and exits.
     
@@ -121,17 +106,9 @@ If you can't use Docker's `apt` repository to install Docker Engine, you can dow
     -   `docker-compose-plugin_<version>_<arch>.deb`
 5.  Install the `.deb` packages. Update the paths in the following example to where you downloaded the Docker packages.
     
-    ```console
-    $ sudo dpkg -i ./containerd.io_<version>_<arch>.deb \ ./docker-ce_<version>_<arch>.deb \ ./docker-ce-cli_<version>_<arch>.deb \ ./docker-buildx-plugin_<version>_<arch>.deb \ ./docker-compose-plugin_<version>_<arch>.deb
-    ```
-    
     The Docker daemon starts automatically.
     
 6.  Verify that the Docker Engine installation is successful by running the `hello-world` image.
-    
-    ```console
-    $ sudo service docker start $ sudo docker run hello-world
-    ```
     
     This command downloads a test image and runs it in a container. When the container runs, it prints a confirmation message and exits.
     
@@ -164,16 +141,8 @@ Always examine scripts downloaded from the internet before running them locally.
 > **Tip: preview script steps before running**
 > 
 > You can run the script with the `--dry-run` option to learn what steps the script will run when invoked:
-> 
-> ```console
-> $ curl -fsSL https://get.docker.com -o get-docker.sh $ sudo sh ./get-docker.sh --dry-run
-> ```
 
 This example downloads the script from [https://get.docker.com/](https://get.docker.com/) and runs it to install the latest stable release of Docker on Linux:
-
-```console
-$ curl -fsSL https://get.docker.com -o get-docker.sh $ sudo sh get-docker.sh Executing docker install script, commit: 7cae5f8b0decc17d6571f9f52eb840fbc13b2737 <...>
-```
 
 You have now successfully installed and started Docker Engine. The `docker` service starts automatically on Debian based distributions. On `RPM` based distributions, such as CentOS, Fedora, RHEL or SLES, you need to start it manually using the appropriate `systemctl` or `service` command. As the message indicates, non-root users can't run Docker commands by default.
 
@@ -187,10 +156,6 @@ Docker also provides a convenience script at [https://test.docker.com/](https://
 
 To install the latest version of Docker on Linux from the test channel, run:
 
-```console
-$ curl -fsSL https://test.docker.com -o test-docker.sh $ sudo sh test-docker.sh
-```
-
 #### [Upgrade Docker after using the convenience script](https://docs.docker.com/engine/install/ubuntu/#upgrade-docker-after-using-the-convenience-script)
 
 If you installed Docker using the convenience script, you should upgrade Docker using your package manager directly. There's no advantage to re-running the convenience script. Re-running it can cause issues if it attempts to re-install repositories which already exist on the host machine.
@@ -199,15 +164,7 @@ If you installed Docker using the convenience script, you should upgrade Docker 
 
 1.  Uninstall the Docker Engine, CLI, containerd, and Docker Compose packages:
     
-    ```console
-    $ sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
-    ```
-    
 2.  Images, containers, volumes, or custom configuration files on your host aren't automatically removed. To delete all images, containers, and volumes:
-    
-    ```console
-    $ sudo rm -rf /var/lib/docker $ sudo rm -rf /var/lib/containerd
-    ```
     
 
 You have to delete any edited configuration files manually.
