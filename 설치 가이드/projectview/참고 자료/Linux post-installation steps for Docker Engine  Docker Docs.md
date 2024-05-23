@@ -20,10 +20,6 @@ To create the `docker` group and add your user:
     
 2.  Add your user to the `docker` group.
     
-    ```console
-    $ sudo usermod -aG docker $USER
-    ```
-    
 3.  Log out and log back in so that your group membership is re-evaluated.
     
     > If you're running Linux in a virtual machine, it may be necessary to restart the virtual machine for changes to take effect.
@@ -36,32 +32,16 @@ To create the `docker` group and add your user:
     
     If you initially ran Docker CLI commands using `sudo` before adding your user to the `docker` group, you may see the following error:
     
-    ```none
-    WARNING: Error loading config file: /home/user/.docker/config.json - stat /home/user/.docker/config.json: permission denied
-    ```
-    
     This error indicates that the permission settings for the `~/.docker/` directory are incorrect, due to having used the `sudo` command earlier.
     
     To fix this problem, either remove the `~/.docker/` directory (it's recreated automatically, but any custom settings are lost), or change its ownership and permissions using the following commands:
-    
-    ```console
-    $ sudo chown "$USER":"$USER" /home/"$USER"/.docker -R $ sudo chmod g+rwx "$HOME/.docker" -R
-    ```
     
 
 ## [Configure Docker to start on boot with systemd](https://docs.docker.com/engine/install/linux-postinstall/#configure-docker-to-start-on-boot-with-systemd)
 
 Many modern Linux distributions use [systemd](https://docs.docker.com/config/daemon/systemd/) to manage which services start when the system boots. On Debian and Ubuntu, the Docker service starts on boot by default. To automatically start Docker and containerd on boot for other Linux distributions using systemd, run the following commands:
 
-```console
-$ sudo systemctl enable docker.service $ sudo systemctl enable containerd.service
-```
-
 To stop this behavior, use `disable` instead.
-
-```console
-$ sudo systemctl disable docker.service $ sudo systemctl disable containerd.service
-```
 
 If you need to add an HTTP proxy, set a different directory or partition for the Docker runtime files, or make other customizations, see [customize your systemd Docker daemon options](https://docs.docker.com/config/daemon/systemd/).
 
