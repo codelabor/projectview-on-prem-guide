@@ -112,7 +112,7 @@ projectview@projectview:/app/installer$
 설치 스크립트에 실행 권한을 부여하고 확인한다.
 
 ```
-projectview@projectview:/app/installer$ chmod u+x install.sh
+projectview@projectview:/app/installer$ chmod 747 install.sh
 projectview@projectview:/app/installer$ ls -al
 total 8418444
 drwxr-xr-x 4 projectview projectview       4096  5월 17 14:44 .
@@ -126,7 +126,7 @@ drwxr-xr-x 8 projectview projectview       4096  5월 16 16:15 .git
 -rw-r--r-- 1 projectview projectview        520  5월 16 16:15 create_nginx_log_rotate.sh
 drwxr-xr-x 5 projectview projectview       4096  5월 16 16:15 data
 -rw-r--r-- 1 projectview projectview       7191  5월 16 16:15 docker-compose.yml
--rwxr--r-- 1 projectview projectview       3181  5월 16 16:15 install.sh
+-rwxr--rwx 1 projectview projectview       3181  5월 16 16:15 install.sh
 -rwxrwxrwx 1 projectview projectview 4339322880  5월 17 11:30 projectview-installer-버전.tar
 -rw-r--r-- 1 projectview projectview 4277902642  5월 16 16:22 projectview-버전.tgz
 projectview@projectview:/app/installer$ 
@@ -135,7 +135,7 @@ projectview@projectview:/app/installer$
 
 설치 스크립트를 실행한다.
 ```
-projectview@projectview:/app/installer$ sudo ./install.sh
+projectview@projectview:/app/installer$ ./install.sh
 [sudo] password for projectview: 
 
 --- ProjectView installation is started..----
