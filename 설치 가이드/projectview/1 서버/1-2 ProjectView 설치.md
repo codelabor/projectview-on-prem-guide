@@ -216,29 +216,6 @@ drwxr-xr-x 3 root        root        4096  5월 17 17:20 uploadFiles
 
 ```
 
-소유권을 변경한다.
-```
-projectview@projectview:/app/projectview$ sudo chown -R projectview:projectview .
-```
-변경된 소유권을 확인한다.
-```
-projectview@projectview:/app/projectview$ ls -al
-total 52
-drwxr-xr-x 7 projectview projectview 4096  5월 17 17:40 .
-drwxr-xr-x 4 projectview projectview 4096  5월 17 13:59 ..
--rwxr--rwx 1 projectview projectview 1261  5월 17 17:10 backup-projectview.sh
-drwxr-xr-x 2 projectview projectview 4096  5월 17 14:52 cert
-drwxr-xr-x 6 projectview projectview 4096  5월 17 14:52 conf
--rw-r--r-- 1 projectview projectview  430  5월 17 14:52 config.env
--rw-r--r-- 1 projectview projectview 7473  5월 17 14:52 docker-compose.yml
-drwxr-xr-x 8 projectview projectview 4096  5월 17 14:52 logs
-drwxr-xr-x 3 projectview projectview 4096  5월 17 14:52 postgresql
--rwxr--rwx 1 projectview projectview   59  5월 17 14:52 shutdown-projectview.sh
--rwxr--rwx 1 projectview projectview  126  5월 17 14:52 startup-projectview.sh
-drwxr-xr-x 3 projectview projectview 4096  5월 17 17:20 uploadFiles
-projectview@projectview:/app/projectview$ 
-```
-
 ##### 디렉토리
 * cert : 도메인 인증서 디렉토리
 * conf : 웹서버 설정 파일 디렉토리
@@ -255,7 +232,7 @@ projectview@projectview:/app/projectview$
 #### 실행 프로세스 확인
 실행된 docker 프로세스를 확인한다.
 ```
-projectview@projectview:/app/projectview$ sudo docker ps
+projectview@projectview:/app/projectview$ docker ps
 CONTAINER ID   IMAGE                                                             COMMAND                   CREATED          STATUS                    PORTS                                                                                  NAMES
 5be1bfd07397   projectview/base-frontend:rhel-8.9-1107.1705420509-nginx-1.25.3   "/usr/local/nginx/sb…"   17 minutes ago   Up 13 minutes (healthy)   0.0.0.0:443->443/tcp, :::443->443/tcp                                                  pms-nginx
 975e2f1fa16a   projectview/pms-server-frontend:버전                          "/usr/local/nginx/sb…"   17 minutes ago   Up 13 minutes (healthy)   0.0.0.0:8090->8090/tcp, :::8090->8090/tcp                                              pms-server-frontend
@@ -275,7 +252,7 @@ projectview@projectview:/app/projectview$
 #### 서비스 종료
 실행 중인 서비스를 종료한다.
 ```
-projectview@projectview:/app/projectview$ sudo ./shutdown-projectview.sh 
+projectview@projectview:/app/projectview$ ./shutdown-projectview.sh 
 [+] Running 12/12
  ✔ Container pms-batch                  Removed                                                              0.4s 
  ✔ Container pms-nginx                  Removed                                                              0.3s 
@@ -296,7 +273,7 @@ projectview@projectview:/app/projectview$
 #### 서비스 시작
 서비스를 시작한다.
 ```
-projectview@projectview:/app/projectview$ sudo ./startup-projectview.sh 
+projectview@projectview:/app/projectview$ ./startup-projectview.sh 
 Warning: No resource found to remove for project "projectview".
 WARN[0000] /app/projectview/docker-compose.yml: `version` is obsolete 
 [+] Running 12/12
@@ -318,6 +295,7 @@ projectview@projectview:/app/projectview$
 #### 서버 IP 주소 확인
 
 클라이언트에서 서버로 접속하기 위한 IP 주소를 확인한다.
+'inet' 부분을 확인한다.
 
 ```
 projectview@projectview:/app/projectview$ ifconfig
@@ -364,7 +342,7 @@ projectview@projectview:~$ sudo vi /etc/hosts
 
 ### Chrome 설정
 ProjectView는 https 통신을 위해 사설 인증서를 사용한다.
-ProjectView의 사설인증서를 신뢰할 수 r있는 인증서로 등록해야 한다.
+ProjectView의 사설인증서를 신뢰할 수 있는 인증서로 등록해야 한다.
 
 #### 인증서 등록
 
