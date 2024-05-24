@@ -15,12 +15,11 @@ projectview@projectview:~$ sudo chown -R projectview:projectview /app
 ```
 projectview@projectview:~$ cd /app
 projectview@projectview:/app$ ls -al
-total 16
-drwxr-xr-x  4 projectview projectview 4096  5월 17 13:59 .
-drwxr-xr-x 21 root        root        4096  5월 17 13:59 ..
-drwxr-xr-x  2 projectview projectview 4096  5월 17 13:59 installer
-drwxr-xr-x  2 projectview projectview 4096  5월 17 13:59 projectview
-projectview@projectview:/app$ 
+합계 16
+drwxr-xr-x  4 projectview projectview 4096  5월 24 10:53 .
+drwxr-xr-x 24 root        root        4096  5월 24 10:53 ..
+drwxr-xr-x  2 projectview projectview 4096  5월 24 10:53 installer
+drwxr-xr-x  2 projectview projectview 4096  5월 24 10:53 projectview
 
 ```
 
@@ -28,7 +27,7 @@ projectview@projectview:/app$
 임시 디렉토리에 설치 파일을 복사한다.
 
 ```
-projectview@projectview:~/다운로드$ cd projectview
+projectview@projectview:/app$ cd ~/다운로드/projectview/
 projectview@projectview:~/다운로드/projectview$ ls
 projectview-installer-버전.tar
 projectview@projectview:~/다운로드/projectview$ cp *.tar /app/installer
@@ -42,7 +41,7 @@ projectview@projectview:/app/installer$
 설치 파일 아카이브를 해제한다.
 
 ```
-projectview@projectview:/app/installer$ tar -xvf projectview-installer-*.tar
+projectview@projectview:/app/installer$ tar -xvf *.tar
 ./
 ./.git/
 ./.git/branches/
@@ -91,20 +90,20 @@ PROJECTVIEW_LOG_PATH=${INSTALL_TARGET_PATH}/logs
 
 ```
 projectview@projectview:/app/installer$ ls -al
-total 8418444
-drwxr-xr-x 4 projectview projectview       4096  5월 17 14:44 .
-drwxr-xr-x 4 projectview projectview       4096  5월 17 13:59 ..
+합계 8418444
+drwxr-xr-x 4 projectview projectview       4096  5월 24 10:58 .
+drwxr-xr-x 4 projectview projectview       4096  5월 24 10:53 ..
 drwxr-xr-x 8 projectview projectview       4096  5월 16 16:15 .git
 -rw-r--r-- 1 projectview projectview       1801  5월 16 16:15 LICENSE
 -rw-r--r-- 1 projectview projectview    3200000  5월 16 16:15 Projectview_Open_Source_License.doc
 -rw-r--r-- 1 projectview projectview         57  5월 16 16:15 README.md
 -rw-r--r-- 1 projectview projectview       3373  5월 16 16:15 common.sh
--rw-r--r-- 1 projectview projectview        430  5월 17 14:43 config.env
+-rw-r--r-- 1 projectview projectview        431  5월 16 16:15 config.env
 -rw-r--r-- 1 projectview projectview        520  5월 16 16:15 create_nginx_log_rotate.sh
 drwxr-xr-x 5 projectview projectview       4096  5월 16 16:15 data
 -rw-r--r-- 1 projectview projectview       7191  5월 16 16:15 docker-compose.yml
 -rw-r--r-- 1 projectview projectview       3181  5월 16 16:15 install.sh
--rwxrwxrwx 1 projectview projectview 4339322880  5월 17 11:30 projectview-installer-버전.tar
+-rwxr-xr-x 1 projectview projectview 4339322880  5월 24 10:54 projectview-installer-버전.tar
 -rw-r--r-- 1 projectview projectview 4277902642  5월 16 16:22 projectview-버전.tgz
 projectview@projectview:/app/installer$ 
 
@@ -136,25 +135,25 @@ projectview@projectview:/app/installer$
 설치 스크립트를 실행한다.
 ```
 projectview@projectview:/app/installer$ ./install.sh
-[sudo] password for projectview: 
 
 --- ProjectView installation is started..----
 
 [Step 1]: checking if docker is installed ...
 
-Note: docker version: 26.1.2
+Note: docker version: 26.1.3
 
 [Step 2]: checking docker-compose is installed ...
 
 Note: Docker Compose version v2.27.0
 
 [Step 3]: loading ProjectView docker images ...
-➜ Load projectview 버전
-af20dc84a450: Loading layer [==================================================>]  212.8MB/212.8MB
-ab85d2a43d1e: Loading layer [==================================================>]   2.56kB/2.56kB
-...생략...
+➜ Load projectview v2.0.8.2
+af20dc84a450: Loading layer  212.8MB/212.8MB
+ab85d2a43d1e: Loading layer   2.56kB/2.56kB
+9... 생략 ...
+472ccc7c220e: Loading layer [==================================================>]  79.48MB/79.48MB
 f75f216b926a: Loading layer [==================================================>]  6.144kB/6.144kB
-Loaded image: projectview/pms-server-frontend:버전
+Loaded image: projectview/pms-server-frontend:v2.0.8.2
 
 
 [Step 4]: preparing environment ...
@@ -176,21 +175,20 @@ Warning: No resource found to remove for project "projectview".
 [Step 5]: starting ProjectView ...
 WARN[0000] /app/installer/docker-compose.yml: `version` is obsolete 
 [+] Running 12/12
- ✔ Network projectview_promise-network  Created                                                              0.2s 
- ✔ Container pms-manual                 Healthy                                                            205.5s 
- ✔ Container pms-redis                  Healthy                                                            205.5s 
- ✔ Container pms-postgresql             Healthy                                                            205.5s 
- ✔ Container pms-server-backend         Healthy                                                            202.5s 
- ✔ Container pms-batch                  Healthy                                                            202.4s 
- ✔ Container ph-server-backend          Healthy                                                            202.4s 
- ✔ Container pms-multi-dashboard        Healthy                                                            202.4s 
- ✔ Container pms-mail                   Healthy                                                            202.4s 
- ✔ Container pms-server-frontend        Healthy                                                            202.2s 
- ✔ Container ph-server-frontend         Healthy                                                            202.2s 
- ✔ Container pms-nginx                  Healthy                                                            217.0s 
+ ✔ Network projectview_promise-network  Created                                                                                       0.1s 
+ ✔ Container pms-postgresql             Healthy                                                                                     222.8s 
+ ✔ Container pms-manual                 Healthy                                                                                     222.8s 
+ ✔ Container pms-redis                  Healthy                                                                                     222.8s 
+ ✔ Container pms-server-backend         Healthy                                                                                     216.5s 
+ ✔ Container ph-server-backend          Healthy                                                                                     216.4s 
+ ✔ Container pms-mail                   Healthy                                                                                     216.4s 
+ ✔ Container pms-multi-dashboard        Healthy                                                                                     216.4s 
+ ✔ Container pms-batch                  Healthy                                                                                     216.4s 
+ ✔ Container pms-server-frontend        Healthy                                                                                     216.2s 
+ ✔ Container ph-server-frontend         Healthy                                                                                     216.2s 
+ ✔ Container pms-nginx                  Healthy                                                                                     231.0s 
 ✔ --- ProjectView has been installed and started successfully.----
 projectview@projectview:/app/installer$ 
-
 ```
 
 설치 완료 후 자동으로 실행된다.
@@ -199,24 +197,27 @@ projectview@projectview:/app/installer$
 설치 디렉토리를 확인한다.
 
 ```
-rojectview@projectview:/app/projectview$ ls -al
-total 52
-drwxr-xr-x 7 projectview projectview 4096  5월 17 17:40 .
-drwxr-xr-x 4 projectview projectview 4096  5월 17 13:59 ..
--rwxr--rwx 1 root        root        1261  5월 17 17:10 backup-projectview.sh
-drwxr-xr-x 2 root        root        4096  5월 17 14:52 cert
-drwxr-xr-x 6 root        root        4096  5월 17 14:52 conf
--rw-r--r-- 1 root        root         430  5월 17 14:52 config.env
--rw-r--r-- 1 root        root        7473  5월 17 14:52 docker-compose.yml
-drwxr-xr-x 8 root        root        4096  5월 17 14:52 logs
-drwxr-xr-x 3 root        root        4096  5월 17 14:52 postgresql
--rwxr--rwx 1 root        root          59  5월 17 14:52 shutdown-projectview.sh
--rwxr--rwx 1 root        root         126  5월 17 14:52 startup-projectview.sh
-drwxr-xr-x 3 root        root        4096  5월 17 17:20 uploadFiles
+projectview@projectview:/app/projectview$ ls -al
+합계 52
+drwxr-xr-x 7 projectview projectview 4096  5월 24 11:04 .
+drwxr-xr-x 4 projectview projectview 4096  5월 24 10:53 ..
+-rwxr--rwx 1 projectview docker      1261  5월 24 11:04 backup-projectview.sh
+drwxrwxr-x 2 projectview docker      4096  5월 24 11:04 cert
+drwxrwxr-x 6 projectview docker      4096  5월 24 11:04 conf
+-rw-r--r-- 1 projectview docker       431  5월 24 11:04 config.env
+-rw-r--r-- 1 projectview docker      7473  5월 24 11:04 docker-compose.yml
+drwxrwxr-x 8 projectview docker      4096  5월 24 11:04 logs
+drwxrwxr-x 3 projectview docker      4096  5월 24 11:04 postgresql
+-rwxr--rwx 1 projectview docker        59  5월 24 11:04 shutdown-projectview.sh
+-rwxr--rwx 1 projectview docker       126  5월 24 11:04 startup-projectview.sh
+drwxrwxr-x 2 projectview docker      4096  5월 24 11:06 uploadFiles
+projectview@projectview:/app/projectview$ 
 
 ```
 
 ##### 디렉토리
+주요 디렉토리의 역할은 다음과 같다.
+
 * cert : 도메인 인증서 디렉토리
 * conf : 웹서버 설정 파일 디렉토리
 * logs : 서비스 별 로그 파일 디렉토리
@@ -224,6 +225,8 @@ drwxr-xr-x 3 root        root        4096  5월 17 17:20 uploadFiles
 * uploadFiles : 첨부 파일 디렉토리
 
 ##### 파일
+주요 파일의 역할은 다음과 같다.
+
 * config.env : ProjectView 설정 파일
 * docker-compose.yml : docker compose 설정 파일
 * shutdown-projectview.sh : ProjectView 서비스 종료 스크립트 파일
@@ -234,19 +237,18 @@ drwxr-xr-x 3 root        root        4096  5월 17 17:20 uploadFiles
 ```
 projectview@projectview:/app/projectview$ docker ps
 CONTAINER ID   IMAGE                                                             COMMAND                   CREATED          STATUS                    PORTS                                                                                  NAMES
-5be1bfd07397   projectview/base-frontend:rhel-8.9-1107.1705420509-nginx-1.25.3   "/usr/local/nginx/sb…"   17 minutes ago   Up 13 minutes (healthy)   0.0.0.0:443->443/tcp, :::443->443/tcp                                                  pms-nginx
-975e2f1fa16a   projectview/pms-server-frontend:버전                          "/usr/local/nginx/sb…"   17 minutes ago   Up 13 minutes (healthy)   0.0.0.0:8090->8090/tcp, :::8090->8090/tcp                                              pms-server-frontend
-583e9a701169   projectview/ph-server-frontend:버전                           "/usr/local/nginx/sb…"   17 minutes ago   Up 13 minutes (healthy)   0.0.0.0:8020->8020/tcp, :::8020->8020/tcp                                              ph-server-frontend
-a03357555f60   projectview/pms-mail:버전                                     "/bin/sh -c 'exec ja…"   17 minutes ago   Up 14 minutes (healthy)   0.0.0.0:8050->8050/tcp, :::8050->8050/tcp                                              pms-mail
-fce21eb2a91f   projectview/pms-multi-dashboard:버전                          "/bin/sh -c 'exec ja…"   17 minutes ago   Up 14 minutes (healthy)   0.0.0.0:8060->8060/tcp, :::8060->8060/tcp                                              pms-multi-dashboard
-5f6024b076ab   projectview/ph-server-backend:버전                            "java -jar /promise-…"   17 minutes ago   Up 14 minutes (healthy)   0.0.0.0:8010->8010/tcp, :::8010->8010/tcp                                              ph-server-backend
-1a421e7ed635   projectview/pms-batch:버전                                    "/bin/sh -c 'exec ja…"   17 minutes ago   Up 14 minutes (healthy)   0.0.0.0:8081->8081/tcp, :::8081->8081/tcp                                              pms-batch
-48d50969344b   projectview/pms-server-backend:버전                           "/bin/sh -c 'exec ja…"   17 minutes ago   Up 16 minutes (healthy)   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp                                              pms-server-backend
-001f3acf52b2   projectview/pms-manual:버전                                   "/usr/local/nginx/sb…"   17 minutes ago   Up 17 minutes (healthy)   80/tcp, 5432/tcp, 8080-8081/tcp, 8090/tcp, 0.0.0.0:8088->8088/tcp, :::8088->8088/tcp   pms-manual
-1782c5b9c49c   projectview/postgres:13.13                                        "docker-entrypoint.s…"   17 minutes ago   Up 17 minutes (healthy)   5432/tcp, 0.0.0.0:35432->35432/tcp, :::35432->35432/tcp                                pms-postgresql
-f7b8fcf3a4c2   projectview/redis:7.2.3                                           "docker-entrypoint.s…"   17 minutes ago   Up 17 minutes (healthy)   0.0.0.0:36379->6379/tcp, :::36379->6379/tcp                                            pms-redis
+bb0fbb58837b   projectview/base-frontend:rhel-8.9-1107.1705420509-nginx-1.25.3   "/usr/local/nginx/sb…"   26 minutes ago   Up 23 minutes (healthy)   0.0.0.0:443->443/tcp, :::443->443/tcp                                                  pms-nginx
+44a0740c4e59   projectview/ph-server-frontend:v2.0.8.2                           "/usr/local/nginx/sb…"   26 minutes ago   Up 23 minutes (healthy)   0.0.0.0:8020->8020/tcp, :::8020->8020/tcp                                              ph-server-frontend
+f5330bbc950e   projectview/pms-server-frontend:v2.0.8.2                          "/usr/local/nginx/sb…"   26 minutes ago   Up 23 minutes (healthy)   0.0.0.0:8090->8090/tcp, :::8090->8090/tcp                                              pms-server-frontend
+08d35608c275   projectview/pms-batch:v2.0.8.2                                    "/bin/sh -c 'exec ja…"   26 minutes ago   Up 23 minutes (healthy)   0.0.0.0:8081->8081/tcp, :::8081->8081/tcp                                              pms-batch
+4396de0cbbb0   projectview/pms-multi-dashboard:v2.0.8.2                          "/bin/sh -c 'exec ja…"   26 minutes ago   Up 23 minutes (healthy)   0.0.0.0:8060->8060/tcp, :::8060->8060/tcp                                              pms-multi-dashboard
+a707492372d7   projectview/ph-server-backend:v2.0.8.2                            "java -jar /promise-…"   26 minutes ago   Up 23 minutes (healthy)   0.0.0.0:8010->8010/tcp, :::8010->8010/tcp                                              ph-server-backend
+cd612015ea90   projectview/pms-mail:v2.0.8.2                                     "/bin/sh -c 'exec ja…"   26 minutes ago   Up 23 minutes (healthy)   0.0.0.0:8050->8050/tcp, :::8050->8050/tcp                                              pms-mail
+eb13ee85e90e   projectview/pms-server-backend:v2.0.8.2                           "/bin/sh -c 'exec ja…"   26 minutes ago   Up 26 minutes (healthy)   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp                                              pms-server-backend
+5e7620e4f67d   projectview/pms-manual:v2.0.8.2                                   "/usr/local/nginx/sb…"   26 minutes ago   Up 26 minutes (healthy)   80/tcp, 5432/tcp, 8080-8081/tcp, 8090/tcp, 0.0.0.0:8088->8088/tcp, :::8088->8088/tcp   pms-manual
+52d727a83af8   projectview/redis:7.2.3                                           "docker-entrypoint.s…"   26 minutes ago   Up 26 minutes (healthy)   0.0.0.0:36379->6379/tcp, :::36379->6379/tcp                                            pms-redis
+5f4540b65f9e   projectview/postgres:13.13                                        "docker-entrypoint.s…"   26 minutes ago   Up 26 minutes (healthy)   5432/tcp, 0.0.0.0:35432->35432/tcp, :::35432->35432/tcp                                pms-postgresql
 projectview@projectview:/app/projectview$ 
-
 ```
 
 #### 서비스 종료
@@ -254,18 +256,18 @@ projectview@projectview:/app/projectview$
 ```
 projectview@projectview:/app/projectview$ ./shutdown-projectview.sh 
 [+] Running 12/12
- ✔ Container pms-batch                  Removed                                                              0.4s 
- ✔ Container pms-nginx                  Removed                                                              0.3s 
- ✔ Container pms-manual                 Removed                                                              0.7s 
- ✔ Container pms-server-frontend        Removed                                                              0.6s 
- ✔ Container ph-server-frontend         Removed                                                              0.4s 
- ✔ Container pms-multi-dashboard        Removed                                                              0.5s 
- ✔ Container ph-server-backend          Removed                                                              0.8s 
- ✔ Container pms-mail                   Removed                                                              0.6s 
- ✔ Container pms-server-backend         Removed                                                              0.7s 
- ✔ Container pms-redis                  Removed                                                              0.5s 
- ✔ Container pms-postgresql             Removed                                                              0.4s 
- ✔ Network projectview_promise-network  Removed                                                              0.4s 
+ ✔ Container pms-nginx                  Removed                                                                                       0.1s 
+ ✔ Container pms-batch                  Removed                                                                                       0.2s 
+ ✔ Container pms-server-frontend        Removed                                                                                       0.2s 
+ ✔ Container ph-server-frontend         Removed                                                                                       0.3s 
+ ✔ Container pms-manual                 Removed                                                                                       0.3s 
+ ✔ Container ph-server-backend          Removed                                                                                       0.4s 
+ ✔ Container pms-mail                   Removed                                                                                       0.4s 
+ ✔ Container pms-multi-dashboard        Removed                                                                                       0.3s 
+ ✔ Container pms-server-backend         Removed                                                                                       0.5s 
+ ✔ Container pms-redis                  Removed                                                                                       0.2s 
+ ✔ Container pms-postgresql             Removed                                                                                       0.2s 
+ ✔ Network projectview_promise-network  Removed                                                                                       0.2s 
 projectview@projectview:/app/projectview$ 
 
 ```
@@ -277,18 +279,18 @@ projectview@projectview:/app/projectview$ ./startup-projectview.sh
 Warning: No resource found to remove for project "projectview".
 WARN[0000] /app/projectview/docker-compose.yml: `version` is obsolete 
 [+] Running 12/12
- ✔ Network projectview_promise-network  Created                                                              0.1s 
- ✔ Container pms-redis                  Healthy                                                            125.3s 
- ✔ Container pms-manual                 Healthy                                                            125.3s 
- ✔ Container pms-postgresql             Healthy                                                            125.3s 
- ✔ Container ph-server-backend          Healthy                                                            125.3s 
- ✔ Container pms-server-backend         Healthy                                                            125.3s 
- ✔ Container pms-batch                  Healthy                                                            125.3s 
- ✔ Container pms-multi-dashboard        Healthy                                                            125.3s 
- ✔ Container pms-mail                   Healthy                                                            125.3s 
- ✔ Container pms-server-frontend        Healthy                                                            125.3s 
- ✔ Container ph-server-frontend         Healthy                                                            125.3s 
- ✔ Container pms-nginx                  Healthy                                                            140.2s 
+ ✔ Network projectview_promise-network  Created                                                                                       0.1s 
+ ✔ Container pms-redis                  Healthy                                                                                     123.9s 
+ ✔ Container pms-postgresql             Healthy                                                                                     123.9s 
+ ✔ Container pms-manual                 Healthy                                                                                     123.9s 
+ ✔ Container ph-server-backend          Healthy                                                                                     123.9s 
+ ✔ Container pms-mail                   Healthy                                                                                     123.9s 
+ ✔ Container pms-multi-dashboard        Healthy                                                                                     123.9s 
+ ✔ Container pms-batch                  Healthy                                                                                     123.9s 
+ ✔ Container pms-server-backend         Healthy                                                                                     123.9s 
+ ✔ Container ph-server-frontend         Healthy                                                                                     123.9s 
+ ✔ Container pms-server-frontend        Healthy                                                                                     123.9s 
+ ✔ Container pms-nginx                  Healthy                                                                                     138.8s 
 projectview@projectview:/app/projectview$ 
 ```
 
@@ -296,6 +298,10 @@ projectview@projectview:/app/projectview$
 
 클라이언트에서 서버로 접속하기 위한 IP 주소를 확인한다.
 'inet' 부분을 확인한다.
+
+* w로 시작: 무선 와이파이
+* e로 시작: 유선 이더넷
+* v로 시작: 가상 환경
 
 ```
 projectview@projectview:/app/projectview$ ifconfig
