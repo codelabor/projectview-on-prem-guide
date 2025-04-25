@@ -27,11 +27,11 @@ drwxr-xr-x  2 projectview projectview 4096  5월 24 10:53 projectview
 임시 디렉토리에 설치 파일을 복사한다.
 
 ```
-projectview@projectview:/app$ cd ~/다운로드/projectview/
-projectview@projectview:~/다운로드/projectview$ ls
+projectview@projectview:/app$ cd ~/다운로드/Linux/projectview/
+projectview@projectview:~/다운로드/Linux/projectview$ ls
 projectview-installer-버전.tar
-projectview@projectview:~/다운로드/projectview$ cp *.tar /app/installer
-projectview@projectview:~/다운로드/projectview$ cd /app/installer
+projectview@projectview:~/다운로드/Linux/projectview$ cp *.tar /app/installer
+projectview@projectview:~/다운로드/Linux/projectview$ cd /app/installer
 projectview@projectview:/app/installer$ ls
 projectview-installer-버전.tar
 projectview@projectview:/app/installer$ 
